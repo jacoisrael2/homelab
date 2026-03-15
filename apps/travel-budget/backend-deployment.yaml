@@ -21,3 +21,8 @@ spec:
         env:
         - name: MONGO_URI
           value: mongodb://mongodb:27017/travel_budget
+        - name: JWT_SECRET
+           valueFrom:
+            secretKeyRef:
+              name: travel-budget-secret
+              key: JWT_SECRET  
