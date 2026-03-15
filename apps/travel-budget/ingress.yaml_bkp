@@ -3,6 +3,8 @@ kind: Ingress
 metadata:
   name: travel-budget
   namespace: travel-budget
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
@@ -16,11 +18,3 @@ spec:
             name: travel-budget-frontend
             port:
               number: 80
-
-      - path: /api
-        pathType: Prefix
-        backend:
-          service:
-            name: travel-budget-backend
-            port:
-              number: 5001
