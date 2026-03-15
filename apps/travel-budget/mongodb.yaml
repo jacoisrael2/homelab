@@ -13,11 +13,16 @@ spec:
       labels:
         app: mongodb
     spec:
+      securityContext:
+        fsGroup: 999
       containers:
       - name: mongodb
         image: mongo:6
         ports:
         - containerPort: 27017
+        securityContext:
+          runAsUser: 999
+          runAsGroup: 999
         volumeMounts:
         - name: mongodb-storage
           mountPath: /data/db
@@ -35,5 +40,5 @@ spec:
   selector:
     app: mongodb
   ports:
-    - port: 27017
-      targetPort: 27017
+  - port: 27017
+    targetPort: 27017
