@@ -9,6 +9,15 @@ spec:
   - host: travel-budget.jaco.lab
     http:
       paths:
+
+      - path: /Auth
+        pathType: Prefix
+        backend:
+          service:
+            name: travel-budget-backend
+            port:
+              number: 5001
+
       - path: /
         pathType: Prefix
         backend:
@@ -16,11 +25,3 @@ spec:
             name: travel-budget-frontend
             port:
               number: 80
-
-      - path: /api
-        pathType: Prefix
-        backend:
-          service:
-            name: travel-budget-backend
-            port:
-              number: 5001
