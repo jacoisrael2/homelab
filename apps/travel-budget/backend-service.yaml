@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: travel-budget-backend
+  namespace: travel-budget
+spec:
+  selector:
+    app: travel-budget-backend
+  ports:
+  - port: 5000
+    targetPort: 5000

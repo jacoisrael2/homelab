@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: travel-budget-backend
+  namespace: travel-budget
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: travel-budget-backend
+  template:
+    metadata:
+      labels:
+        app: travel-budget-backend
+    spec:
+      containers:
+      - name: backend
+        image: ghcr.io/jacoisrael2/travel-budget-backend:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: MONGO_URI
+          value: mongodb://mongodb:27017/travel_budget
