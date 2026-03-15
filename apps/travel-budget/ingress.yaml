@@ -10,7 +10,31 @@ spec:
     http:
       paths:
 
-      - path: /Auth
+      - path: /user
+        pathType: Prefix
+        backend:
+          service:
+            name: travel-budget-backend
+            port:
+              number: 5001
+
+      - path: /trip
+        pathType: Prefix
+        backend:
+          service:
+            name: travel-budget-backend
+            port:
+              number: 5001
+
+      - path: /expense
+        pathType: Prefix
+        backend:
+          service:
+            name: travel-budget-backend
+            port:
+              number: 5001
+
+      - path: /report
         pathType: Prefix
         backend:
           service:
